@@ -1,4 +1,4 @@
 ---
-project : PROJECT
-github_user: USER
-description : ~
+project : jsdiff
+github_user: avh4
+description : Elm bindings for kpdecker/jsdiff ('diff' on npm)
