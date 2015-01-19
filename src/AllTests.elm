@@ -3,8 +3,8 @@ module AllTests where
 import ElmTest.Assertion (..)
 import ElmTest.Test (..)
 
-import FooTest
+import JsDiffTest
 
-all = Suite "outlin"
-  [ FooTest.suite
+all = Suite "JsDiff"
+  [ JsDiffTest.suite
   ]
