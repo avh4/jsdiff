@@ -24,11 +24,16 @@ Elm.Native.JsDiff.make = function(elm) {
     return List.fromArray(changesJsArray);
   }
 
+  function diffChars(a, b) {
+    return toChangesList(JsDiff.diffChars(a, b));
+  }
+
   function diffLines(a, b) {
-    return toChangesList(JsDiff.diffLines(a,b));
+    return toChangesList(JsDiff.diffLines(a, b));
   }
 
   return elm.Native.JsDiff.values = {
+    diffChars: F2(diffChars),
     diffLines: F2(diffLines)
   };
 };

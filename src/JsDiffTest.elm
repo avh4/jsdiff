@@ -13,4 +13,13 @@ suite = Suite "Foo"
       , Added "b1\nxxx\n"
       , Removed "b\nc"
       ]
+  , test "diffChars" <|
+      diffChars "a\nb\nc" "a\nb1\nxxx\n"
+      `assertEqual`
+      [ NoChange "a\nb"
+      , Added "1"
+      , NoChange "\n"
+      , Added "xxx\n"
+      , Removed "c"
+      ]
   ]
