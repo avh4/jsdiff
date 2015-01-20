@@ -24,31 +24,16 @@ Elm.Native.JsDiff.make = function(elm) {
     return List.fromArray(changesJsArray);
   }
 
-  function diffChars(a, b) {
-    return toChangesList(JsDiff.diffChars(a, b));
-  }
+  var functions = [
+    'diffChars', 'diffWords', 'diffWordsWithSpace', 'diffLines', 'diffSentences'
+  ];
 
-  function diffWords(a, b) {
-    return toChangesList(JsDiff.diffWords(a, b));
-  }
+  elm.Native.JsDiff.values = {};
+  functions.forEach(function(functionName) {
+    elm.Native.JsDiff.values[functionName] = F2(function(a, b) {
+      return toChangesList(JsDiff[functionName](a, b));
+    });
+  });
 
-  function diffWordsWithSpace(a, b) {
-    return toChangesList(JsDiff.diffWordsWithSpace(a, b));
-  }
-
-  function diffLines(a, b) {
-    return toChangesList(JsDiff.diffLines(a, b));
-  }
-
-  function diffSentences(a, b) {
-    return toChangesList(JsDiff.diffSentences(a, b));
-  }
-
-  return elm.Native.JsDiff.values = {
-    diffChars: F2(diffChars),
-    diffWords: F2(diffWords),
-    diffWordsWithSpace: F2(diffWordsWithSpace),
-    diffLines: F2(diffLines),
-    diffSentences: F2(diffSentences)
-  };
+  return elm.Native.JsDiff.values;
 };
