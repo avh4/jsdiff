@@ -28,12 +28,17 @@ Elm.Native.JsDiff.make = function(elm) {
     return toChangesList(JsDiff.diffChars(a, b));
   }
 
+  function diffWords(a, b) {
+    return toChangesList(JsDiff.diffWords(a, b));
+  }
+
   function diffLines(a, b) {
     return toChangesList(JsDiff.diffLines(a, b));
   }
 
   return elm.Native.JsDiff.values = {
     diffChars: F2(diffChars),
+    diffWords: F2(diffWords),
     diffLines: F2(diffLines)
   };
 };

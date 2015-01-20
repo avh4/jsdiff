@@ -22,4 +22,14 @@ suite = Suite "Foo"
       , Added "xxx\n"
       , Removed "c"
       ]
+  , test "diffWords" <|
+      diffWords "a\nb\nc" "a\nb1\nxxx\n"
+      `assertEqual`
+      [ NoChange "a\n"
+      , Added "b1"
+      , Removed "b"
+      , NoChange "\n"
+      , Added "xxx\n"
+      , Removed "c"
+      ]
   ]
