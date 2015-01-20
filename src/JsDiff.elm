@@ -1,5 +1,6 @@
 module JsDiff
   ( diffChars, diffWords, diffWordsWithSpace, diffLines, diffSentences
+  , diffInternalStructure
   , Change(..)
   ) where
 
@@ -44,3 +45,8 @@ diffLines = Native.JsDiff.diffLines
 -}
 diffSentences : String -> String -> List Change
 diffSentences = Native.JsDiff.diffSentences
+
+{-| Diffs two Elm objects, comparing their internal structure.
+-}
+diffInternalStructure : a -> a -> List Change
+diffInternalStructure = Native.JsDiff.diffInternalStructure

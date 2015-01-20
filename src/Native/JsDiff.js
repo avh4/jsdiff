@@ -35,5 +35,9 @@ Elm.Native.JsDiff.make = function(elm) {
     });
   });
 
+  elm.Native.JsDiff.values.diffInternalStructure = F2(function(a, b) {
+    return toChangesList(JsDiff.diffJson(a, b));
+  });
+
   return elm.Native.JsDiff.values;
 };
