@@ -23,13 +23,20 @@ suite = Suite "Foo"
       , Removed "c"
       ]
   , test "diffWords" <|
-      diffWords "a\nb\nc" "a\nb1\nxxx\n"
+      diffWords "b\nc" "b1 \nxxx\n"
       `assertEqual`
-      [ NoChange "a\n"
-      , Added "b1"
+      [ Added "b1"
+      , Removed "b"
+      , NoChange " \n"
+      , Added "xxx\n"
+      , Removed "c"
+      ]
+  , test "diffWordsWithSpace" <|
+      diffWordsWithSpace "b\nc" "b1 \nxxx\n"
+      `assertEqual`
+      [ Added "b1 \nxxx"
       , Removed "b"
       , NoChange "\n"
-      , Added "xxx\n"
       , Removed "c"
       ]
   ]

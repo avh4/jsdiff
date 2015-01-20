@@ -1,5 +1,5 @@
 module JsDiff
-  ( diffChars, diffWords, diffLines
+  ( diffChars, diffWords, diffWordsWithSpace, diffLines
   , Change(..)
   ) where
 
@@ -29,6 +29,11 @@ diffChars = Native.JsDiff.diffChars
 -}
 diffWords : String -> String -> List Change
 diffWords = Native.JsDiff.diffWords
+
+{-| Diffs two blocks of text, comparing comparing word by word, treating whitespace as significant.
+-}
+diffWordsWithSpace : String -> String -> List Change
+diffWordsWithSpace = Native.JsDiff.diffWordsWithSpace
 
 {-| Diffs two blocks of text, comparing line by line.
 -}
