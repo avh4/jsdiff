@@ -1,5 +1,5 @@
 module JsDiff
-  ( diffChars, diffWords, diffWordsWithSpace, diffLines
+  ( diffChars, diffWords, diffWordsWithSpace, diffLines, diffSentences
   , Change(..)
   ) where
 
@@ -39,3 +39,8 @@ diffWordsWithSpace = Native.JsDiff.diffWordsWithSpace
 -}
 diffLines : String -> String -> List Change
 diffLines = Native.JsDiff.diffLines
+
+{-| Diffs two blocks of text, comparing sentence by sentence.
+-}
+diffSentences : String -> String -> List Change
+diffSentences = Native.JsDiff.diffSentences

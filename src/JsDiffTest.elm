@@ -39,4 +39,11 @@ suite = Suite "Foo"
       , NoChange "\n"
       , Removed "c"
       ]
+  , test "diffSentences" <|
+      diffSentences "b c. a." "b1. a."
+      `assertEqual`
+      [ Added "b1."
+      , Removed "b c."
+      , NoChange " a."
+      ]
   ]
